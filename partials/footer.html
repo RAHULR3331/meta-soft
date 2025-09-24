@@ -1,0 +1,58 @@
+<!-- partials/footer.html -->
+<footer class="ms-footer" role="contentinfo">
+  <style>
+    :root {
+      --ms-footer-bg: #1f2937;
+      --ms-footer-text: #ffffff;
+      --ms-footer-muted: #d1d5db;
+      --ms-link: #e5e7eb;
+      --ms-link-hover: #ffffff;
+      --ms-maxw: 1200px;
+    }
+    .ms-footer {
+      background: var(--ms-footer-bg);
+      color: var(--ms-footer-text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+    }
+    .ms-footer .ms-wrap {
+      max-width: var(--ms-maxw);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 2rem;
+      text-align: center;
+    }
+    .ms-foot-links {
+      margin-top: .75rem;
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .ms-foot-links a {
+      color: var(--ms-link);
+      text-decoration: none;
+      transition: color .2s ease;
+      font-weight: 500;
+    }
+    .ms-foot-links a:hover { color: var(--ms-link-hover); }
+    .ms-foot-note { color: var(--ms-footer-muted); margin-top: .75rem; font-size: .95rem; }
+    @media (prefers-color-scheme: dark) {
+      .ms-footer { background: var(--ms-footer-bg); color: var(--ms-footer-text); }
+    }
+  </style>
+
+  <div class="ms-wrap">
+    <p>© <span id="msYear"></span> Meta Soft · Empowering Businesses Through Technology</p>
+    <nav class="ms-foot-links" aria-label="Footer">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/sitemap.xml">Sitemap</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <p class="ms-foot-note">Invention through innovation</p>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.currentScript.parentElement;
+      const y = root.querySelector('#msYear');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</footer>
