@@ -285,7 +285,139 @@
     </div>
 
     <!-- Header include -->
-    <div data-include="partials/header.html"></div>
+     <header class="ms-header" role="banner">
+  <style>
+    :root {
+      --ms-header-h: 80px;
+      --ms-text: #1f2937;
+      --ms-link: #1f2937;
+      --ms-link-active: #2563eb;
+      --ms-white: #ffffff;
+      --ms-shadow: 0 2px 20px rgba(0,0,0,.08);
+    }
+    .ms-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background-color: var(--ms-white) !important; /* stays white */
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      transition: box-shadow .25s ease;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+    }
+    .ms-header.scrolled { box-shadow: var(--ms-shadow); }
+    .ms-header .ms-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: var(--ms-header-h);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ms-header .ms-logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--ms-text);
+    }
+    .ms-header .ms-logo img {
+      height: 64px; width: auto; display: block;
+    }
+    .ms-header .ms-logo .ms-brand { font-weight: 700; font-size: 1.125rem; color: var(--ms-text); }
+
+    /* nav */
+    .ms-nav { display: flex; gap: 20px; align-items: center; }
+    .ms-nav a {
+      text-decoration: none; font-weight: 500;
+      color: var(--ms-link);
+      padding: .5rem .25rem; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .ms-nav a:hover, .ms-nav a[aria-current="page"] { color: var(--ms-link-active); }
+    .ms-menu-btn {
+      display: none; background: none; border: 0; color: var(--ms-text);
+      font-size: 1.75rem; cursor: pointer; line-height: 1;
+    }
+
+    /* mobile */
+    @media (max-width: 768px) {
+      :root { --ms-header-h: 70px; }
+      .ms-header .ms-logo img { height: 56px; }
+      .ms-menu-btn { display: inline-block; }
+      .ms-nav {
+        display: none;
+        flex-direction: column; width: 100%;
+        position: absolute; left: 0; top: var(--ms-header-h);
+        padding: 1rem 1.25rem;
+        background-color: var(--ms-white) !important; /* stays white */
+        border-bottom: 1px solid rgba(0,0,0,.08);
+        box-shadow: var(--ms-shadow);
+      }
+      .ms-nav.ms-active { display: flex; }
+      .ms-nav a { padding: .5rem 0; }
+    }
+
+    /* keep header white even in dark mode */
+    @media (prefers-color-scheme: dark) {
+      .ms-header,
+      .ms-nav { background-color: var(--ms-white) !important; }
+      .ms-header .ms-logo .ms-brand,
+      .ms-nav a { color: var(--ms-text); }
+    }
+
+    /* optional helper: add to main container to prevent overlap with fixed header */
+    .ms-offset-top { padding-top: var(--ms-header-h); }
+  </style>
+
+  <div class="ms-container">
+    <a href="/index.html" class="ms-logo" aria-label="Home">
+      <img src="/images/meta-soft-logo.jpg" alt="Meta Soft logo" />
+      <img src="/images/meta-soft-logo-wide.jpg" alt="Meta Soft logo" />
+    </a>
+
+    <button class="ms-menu-btn" id="msMenuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="msPrimaryNav">
+      ☰
+    </button>
+
+    <nav class="ms-nav" id="msPrimaryNav" aria-label="Primary">
+      <a href="/index.html">Company</a>
+      <a href="/services.html">Services</a>
+      <a href="/softwares.html">Softwares</a>
+      <a href="/clients.html">Clients</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      const header = document.currentScript.parentElement;
+      const btn = header.querySelector('#msMenuToggle');
+      const nav = header.querySelector('#msPrimaryNav');
+
+      // Toggle mobile menu
+      btn?.addEventListener('click', () => {
+        const open = nav.classList.toggle('ms-active');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+
+      // Add shadow on scroll
+      const onScroll = () => {
+        if (window.scrollY > 10) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Mark active link
+      const path = location.pathname.replace(/\/+$/, '');
+      header.querySelectorAll('.ms-nav a').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        if (!href) return;
+        const clean = href.replace(/\/+$/, '');
+        if (clean && clean === path) a.setAttribute('aria-current', 'page');
+      });
+    })();
+  </script>
+</header>
+    <!-- <div data-include="partials/header.html"></div> -->
 
     <main>
         <section class="hero-section" role="main">
