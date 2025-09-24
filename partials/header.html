@@ -1,6 +1,4 @@
 <!-- partials/header.html -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <header class="ms-header" role="banner">
   <style>
     :root {
@@ -11,20 +9,17 @@
       --ms-white: #ffffff;
       --ms-shadow: 0 2px 20px rgba(0,0,0,.08);
     }
-
-    /* Header base */
     .ms-header {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background-color: var(--ms-white) !important;
+      background-color: var(--ms-white) !important; /* stays white */
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0,0,0,.08);
       transition: box-shadow .25s ease;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
     }
     .ms-header.scrolled { box-shadow: var(--ms-shadow); }
-
     .ms-header .ms-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -34,72 +29,39 @@
       align-items: center;
       justify-content: space-between;
     }
-
-    /* Logo */
     .ms-header .ms-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--ms-text);
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--ms-text);
     }
     .ms-header .ms-logo img {
-      height: 64px;
-      width: auto;
-      display: block;
+      height: 64px; width: auto; display: block;
     }
-    .ms-header .ms-logo .ms-brand {
-      font-weight: 700;
-      font-size: 1.125rem;
-      color: var(--ms-text);
-    }
+    .ms-header .ms-logo .ms-brand { font-weight: 700; font-size: 1.125rem; color: var(--ms-text); }
 
-    /* Navigation */
-    .ms-nav {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+    /* nav */
+    .ms-nav { display: flex; gap: 20px; align-items: center; }
     .ms-nav a {
-      text-decoration: none;
-      font-weight: 500;
+      text-decoration: none; font-weight: 500;
       color: var(--ms-link);
-      padding: .5rem .25rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      padding: .5rem .25rem; display: inline-flex; align-items: center; gap: 6px;
     }
-    .ms-nav a:hover,
-    .ms-nav a[aria-current="page"] {
-      color: var(--ms-link-active);
-    }
-
-    /* Hamburger button */
+    .ms-nav a:hover, .ms-nav a[aria-current="page"] { color: var(--ms-link-active); }
     .ms-menu-btn {
-      display: none;
-      background: none;
-      border: 0;
-      cursor: pointer;
-      line-height: 1;
+      display: none; background: none; border: 0; color: var(--ms-text);
+      font-size: 1.75rem; cursor: pointer; line-height: 1;
     }
-    .ms-menu-btn svg { display: block; }
 
-    /* Mobile styles */
+    /* mobile */
     @media (max-width: 768px) {
       :root { --ms-header-h: 70px; }
       .ms-header .ms-logo img { height: 56px; }
       .ms-menu-btn { display: inline-block; }
-
-      
       .ms-nav {
         display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        top: var(--ms-header-h);
+        flex-direction: column; width: 100%;
+        position: absolute; left: 0; top: var(--ms-header-h);
         padding: 1rem 1.25rem;
-        background-color: var(--ms-white) !important;
+        background-color: var(--ms-white) !important; /* stays white */
         border-bottom: 1px solid rgba(0,0,0,.08);
         box-shadow: var(--ms-shadow);
       }
@@ -107,33 +69,28 @@
       .ms-nav a { padding: .5rem 0; }
     }
 
-    /* Dark mode fix */
+    /* keep header white even in dark mode */
     @media (prefers-color-scheme: dark) {
-      .ms-header, .ms-nav { background-color: var(--ms-white) !important; }
-      .ms-header .ms-logo .ms-brand, .ms-nav a { color: var(--ms-text); }
+      .ms-header,
+      .ms-nav { background-color: var(--ms-white) !important; }
+      .ms-header .ms-logo .ms-brand,
+      .ms-nav a { color: var(--ms-text); }
     }
 
-    /* Optional spacing for main content */
+    /* optional helper: add to main container to prevent overlap with fixed header */
     .ms-offset-top { padding-top: var(--ms-header-h); }
   </style>
 
   <div class="ms-container">
-    <!-- Logo -->
     <a href="/index.html" class="ms-logo" aria-label="Home">
       <img src="/images/meta-soft-logo.jpg" alt="Meta Soft logo" />
       <img src="/images/meta-soft-logo-wide.jpg" alt="Meta Soft logo" />
     </a>
 
-    <!-- Hamburger button -->
     <button class="ms-menu-btn" id="msMenuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="msPrimaryNav">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
+      ☰
     </button>
 
-    <!-- Navigation -->
     <nav class="ms-nav" id="msPrimaryNav" aria-label="Primary">
       <a href="/index.html">Company</a>
       <a href="/services.html">Services</a>
