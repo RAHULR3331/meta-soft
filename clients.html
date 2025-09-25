@@ -57,11 +57,32 @@
     .filter-btn { padding:9px 16px; font-size:14px; font-weight:600; cursor:pointer; background:transparent; color:var(--primary-color); border:2px solid var(--primary-color); border-radius:24px; transition:all .2s; }
     .filter-btn:hover, .filter-btn.active { background:var(--primary-color); color:#fff; transform:translateY(-2px); }
 
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; margin-top:20px; }
-    .client { background:linear-gradient(145deg,#f8fafc,#e2e8f0); border:1px solid #e2e8f0; border-radius:14px; padding:18px; display:flex; align-items:center; gap:14px; transition:all .25s ease; cursor:pointer; }
-    .client:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); border-color:var(--primary-color); background:linear-gradient(145deg,#ffffff,#f1f5f9); }
-    .client .icon { font-size:1.8rem; background:var(--gradient-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; flex-shrink:0; }
-    .client .name { font-weight:700; font-size:1rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem;
+    }    
+
+    .client {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1.2rem;
+      box-shadow: 0 1px 4px rgba(255, 240, 240, 0.06), 0 0.5px 1.5px rgba(0,0,0,0.03);
+      font-size: 1.1rem;
+      transition: box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .client:hover {
+      box-shadow: 0 3px 14px rgba(206, 195, 195, 0.12), 0 1.5px 6px rgba(255, 245, 245, 0.09);
+    }
+    .client .name {
+      font-weight: 600;
+      color: rgb(255, 255, 255);
+      letter-spacing: 0.02em;
+    }
     .client .industry { font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-secondary); }
 
     /* Background shapes */
@@ -121,70 +142,87 @@
       </div>
 
       <div class="grid" id="grid">
-        <!-- sample cards adapted from provided list structure -->
-        <article class="client" data-industry="textiles" data-keywords="chandra textiles garments yarn">
-          <div class="icon"><i class="fa-solid fa-tshirt"></i></div>
-          <div>
-            <div class="name">Chandra Textiles Pvt. Ltd</div>
-            <div class="industry">Textiles</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="engineering" data-keywords="dms engineering">
-          <div class="icon"><i class="fa-solid fa-tools"></i></div>
-          <div>
-            <div class="name">DMS Engineering</div>
-            <div class="industry">Engineering</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="manufacturing" data-keywords="sriji enterprises">
-          <div class="icon"><i class="fa-solid fa-industry"></i></div>
-          <div>
-            <div class="name">Sriji Enterprises</div>
-            <div class="industry">Manufacturing</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="manufacturing" data-keywords="adithya ferro cast foundry">
-          <div class="icon"><i class="fa-solid fa-fire"></i></div>
-          <div>
-            <div class="name">Adithya Ferro Cast India Pvt. Ltd</div>
-            <div class="industry">Manufacturing</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="healthcare" data-keywords="new gen medi services">
-          <div class="icon"><i class="fa-solid fa-heart"></i></div>
-          <div>
-            <div class="name">New Gen Medi Services</div>
-            <div class="industry">Healthcare</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="retail" data-keywords="aroma traders trading">
-          <div class="icon"><i class="fa-solid fa-shopping-cart"></i></div>
-          <div>
-            <div class="name">Aroma Traders</div>
-            <div class="industry">Retail</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="automotive" data-keywords="recon car beauty">
-          <div class="icon"><i class="fa-solid fa-car"></i></div>
-          <div>
-            <div class="name">Recon Car Beauty Makers</div>
-            <div class="industry">Automotive</div>
-          </div>
-        </article>
-
-        <article class="client" data-industry="technology" data-keywords="smart systems">
-          <div class="icon"><i class="fa-solid fa-microchip"></i></div>
-          <div>
-            <div class="name">Smart Systems</div>
-            <div class="industry">Technology</div>
-          </div>
-        </article>
+        <article class="client"><div class="name">CHANDRA TEXTILES PVT.LTD</div></article>
+        <article class="client"><div class="name">COTMA ASSOCIATIONS</div></article>
+        <article class="client"><div class="name">DMS ENGINEERING</div></article>
+        <article class="client"><div class="name">LAKSHMI ENGG.CORPN</div></article>
+        <article class="client"><div class="name">OMAKR CONTROLS</div></article>
+        <article class="client"><div class="name">ENGINEERING ENTERPRICES</div></article>
+        <article class="client"><div class="name">SRIJI ENTERPRISES</div></article>
+        <article class="client"><div class="name">MINU PUMPS</div></article>
+        <article class="client"><div class="name">BRIGHT TEX SOLUTIONS</div></article>
+        <article class="client"><div class="name">NEW GEN MEDI SERVICES</div></article>
+        <article class="client"><div class="name">J.M.S. KITCHEN EQUIPMENTS</div></article>
+        <article class="client"><div class="name">SRI VENKATESWARA RUBBER PRODUCT</div></article>
+        <article class="client"><div class="name">ADITHYA FERRO CAST INDIA PVT.LTD</div></article>
+        <article class="client"><div class="name">ANUSWARYA ENTERPRISES</div></article>
+        <article class="client"><div class="name">QUAUNTUM HEAT TREATMENTS INDIA PVT.LTD</div></article>
+        <article class="client"><div class="name">SG FABS</div></article>
+        <article class="client"><div class="name">SM INDUSTRIES</div></article>
+        <article class="client"><div class="name">ABI AAKASH TRADING</div></article>
+        <article class="client"><div class="name">SMART SYSTEMS</div></article>
+        <article class="client"><div class="name">IN-ARC SOLUCTIONS</div></article>
+        <article class="client"><div class="name">AERO TECH ENGINEERING</div></article>
+        <article class="client"><div class="name">ELECTRO FINISHERS</div></article>
+        <article class="client"><div class="name">PRABU PLATERS</div></article>
+        <article class="client"><div class="name">HARI AUTO FINANCE</div></article>
+        <article class="client"><div class="name">JG POLYPET PVT LTD</div></article>
+        <article class="client"><div class="name">FRESH FAMILY SPA</div></article>
+        <article class="client"><div class="name">LULU BEAUTY SHOP</div></article>
+        <article class="client"><div class="name">UNIVERSAL PAVERS</div></article>
+        <article class="client"><div class="name">RECON CAR BEAUTY MAKERS</div></article>
+        <article class="client"><div class="name">MEDIA POINT</div></article>
+        <article class="client"><div class="name">UNITED STEELS</div></article>
+        <article class="client"><div class="name">MATHA STEELS</div></article>
+        <article class="client"><div class="name">V.K. IRON TRADERS</div></article>
+        <article class="client"><div class="name">AMMAN ENGINEERING</div></article>
+        <article class="client"><div class="name">VIKASH CHAIN MAKERA</div></article>
+        <article class="client"><div class="name">G.R.MARKETING</div></article>
+        <article class="client"><div class="name">U.K.S. FRUITS MUNDI</div></article>
+        <article class="client"><div class="name">PIONEER PAPER PRODUCT</div></article>
+        <article class="client"><div class="name">GTP EQUIPMENTS</div></article>
+        <article class="client"><div class="name">PRABHU INDUSTRIES</div></article>
+        <article class="client"><div class="name">PV GEARS</div></article>
+        <article class="client"><div class="name">PRABU PLATERS</div></article>
+        <article class="client"><div class="name">GG JEWELERY</div></article>
+        <article class="client"><div class="name">SPARTEK</div></article>
+        <article class="client"><div class="name">SM INDUSTRIES</div></article>
+        <article class="client"><div class="name">BRIGHT POWER SOLUTIONS</div></article>
+        <article class="client"><div class="name">TIRUMAGHAL ENTERPRICES</div></article>
+        <article class="client"><div class="name">PRABU ENGINEERING WORKS</div></article>
+        <article class="client"><div class="name">SATHYA RUBBER PRODUCTS</div></article>
+        <article class="client"><div class="name">SANTHOSH ENGINEERING WORKS</div></article>
+        <article class="client"><div class="name">SMART SYSTEMS</div></article>
+        <article class="client"><div class="name">ORIGIN AUTOMATION</div></article>
+        <article class="client"><div class="name">FURNTECH MODULARS</div></article>
+        <article class="client"><div class="name">SABHARI ELECTROPLATERS</div></article>
+        <article class="client"><div class="name">SURAYA GRAPHICS</div></article>
+        <article class="client"><div class="name">MARUTI AUTO EQUIPMENT INDIA PVT</div></article>
+        <article class="client"><div class="name">SRI KAVERY ENGINEERING COMPANY</div></article>
+        <article class="client"><div class="name">ASPIRE AUTOMATION</div></article>
+        <article class="client"><div class="name">SADHAN PROCESS</div></article>
+        <article class="client"><div class="name">ANNAPOORNI INDUSTRIES</div></article>
+        <article class="client"><div class="name">MICRO POINT</div></article>
+        <article class="client"><div class="name">R.K.INDUSTRIES</div></article>
+        <article class="client"><div class="name">SRI SHANTHI INDUSTRIES</div></article>
+        <article class="client"><div class="name">ELECTRO TREATMENTS</div></article>
+        <article class="client"><div class="name">ALLMA AGRO PVT LTD</div></article>
+        <article class="client"><div class="name">MODERN SPRING WORKS</div></article>
+        <article class="client"><div class="name">MARUTHI AAUTO EQUIPMENTS</div></article>
+        <article class="client"><div class="name">ALC ENGINEERING COMPANY</div></article>
+        <article class="client"><div class="name">SLS EQUIIPMENTSS</div></article>
+        <article class="client"><div class="name">WINTECH HEAT EXCHANGER</div></article>
+        <article class="client"><div class="name">BAVIDHA ENGINEERING</div></article>
+        <article class="client"><div class="name">AA INDUSTRIES</div></article>
+        <article class="client"><div class="name">HINDUSTAN ELECTRO</div></article>
+        <article class="client"><div class="name">JAYYAM STEELS</div></article>
+        <article class="client"><div class="name">BROWN ENGINEERING</div></article>
+        <article class="client"><div class="name">SIVA FINANCE</div></article>
+        <article class="client"><div class="name">BLUE MAK</div></article>
+        <article class="client"><div class="name">SS STEELS</div></article>
+        <article class="client"><div class="name">AROMA TRADERS</div></article>
+        <article class="client"><div class="name">GANDHI MOOLIGAI</div></article>
+        <article class="client"><div class="name">BHARATH ENGG.</div></article>
       </div>
     </section>
   </div>
